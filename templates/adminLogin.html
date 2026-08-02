@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/login.css')}}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="loginContainer">
+
+            <img src="{{ url_for('static', filename='images/hero.png') }}"
+            class="leftImage">
+
+            <div class="loginBox">
+
+                <div class="companyName">
+                    <img src="static/images/EduziLogo2.png">
+                    <h1>EDUZI ENTERPRISE</h1>
+                </div>
+
+                <div class="login">
+                    <h1>Admin Login</h1>
+                    <form action="/adminLogin" method="post">
+                        <input type="text" name="username" placeholder="Username" required>
+
+
+                        <input type="password" name="password" placeholder="Password" required>
+
+
+                        <button type="submit">Login</button>
+                    </form>
+
+                </div>
+
+
+            </div>
+
+            <img src="{{ url_for('static', filename='images/nb.png') }}"
+            class="rightImage">
+
+        </div>
+
+    </div>
+
+{% endblock %}
+

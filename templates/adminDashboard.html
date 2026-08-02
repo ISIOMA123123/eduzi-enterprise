@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin Dashboard
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet"
+    href="{{url_for ('static', filename='css/adminDashboard.css')}}">
+{% endblock %}
+
+{% block body %}
+    <div class="dashboard">
+
+        <div class="dashboard-card">
+            <h1>Eduzi Enterprise</h1>
+
+            <h2>Admin Dashboard</h2>
+
+            <p>Welcome back admin </p>
+
+            <p class="subtitle">Manage your products</p>
+
+            <div class="dashboardButtons">
+
+                <a href="/adminProducts" class="btn">
+                     Manage Products
+                </a>
+
+                <a href="/viewOrders" class="btn">
+                     View Orders
+                </a>
+
+                <a href="/logout" class="btn">Logout</a>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

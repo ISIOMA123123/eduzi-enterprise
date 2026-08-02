@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Manage Products
+{% endblock %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/adminProducts.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="products-container">
+
+    <h1> Product Management </h1>
+
+    <div class="card">
+
+        <h2> Add New Product </h2>
+
+        <form action="/adminProducts" method="post">
+            <div class="form-group">
+                <label>Product Name</label>
+
+                <input type="text" name="product_name" placeholder="Enter Product Name" required>
+            </div>
+
+            <div class="form-group">
+
+                <label>Price (₦)</label>
+
+                <input type="number" name="price" step="0.01" min="0" placeholder="0.00" required>
+            </div>
+
+            <button class="btn btn-green"> Add Product </button>
+        </form>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Search Products</h2>
+
+        <form action="/searchProducts" method="GET" class="search-form">
+
+            <input type="search" name="search" value="{{ search }}" placeholder="Search by Products name">
+
+            <button class="btn"> Search </button>
+
+            <a href="/adminProducts" class="btn gray"> Show All </a>
+        </form>
+
+
+    </div>
+
+    <div class="card">
+
+        <h2>Current Products</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Product</th>
+
+                    <th>Price</th>
+
+                    <th>Axtion</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for product in products %}
+
+                <tr>
+                    <td>{{ product.product_name }}</td>
+
+                    <td>₦{{ "{:,.2f}".format(product.price) }}</td>
+
+                    <td>
+                        <a class="action edit" href="/adminEditProduct/{{ product.id }}">Edit</a>
+
+                        <a class="action delete" href="/adminDeleteProduct/{{ product.id }}"
+                        onclick="return confirm('Delete this product')">Delete this product?</a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="bottom-links">
+        <a href="/adminDashboard" class="btn gray">
+            Dashboard
+        </a>
+
+        <a href="/logout" class="btn red">
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

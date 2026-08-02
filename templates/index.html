@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block css %}
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/index.css')}}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        {% if name %}
+
+        <div class="card">
+
+            <header>
+                <img src="static/images/EduziLogo2.png">
+                <h1>
+                    EDUZI ENTERPRISE
+                </h1>
+            </header>
+            <h2>Place your order here
+                <a href="/order"> ORDER </a>
+            </h2>
+
+            <h3>You are logged in as {{ name }}. <a href="/logout" class="btn red">Log out</a></h3>
+
+        </div>
+
+
+
+
+        <div class="card">
+            <h1>Welcome {{ name }}, Here are the products we have in store</h1>
+
+            <h2>Available Products</h2>
+            <div class="table-container">
+                <ul>
+                        <table border="1" cellpadding="8">
+                            <thead>
+                                <tr>
+                                    <th>Products</th>
+                                    <th>Prices</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for product in products %}
+                                <tr>
+                                    <td>{{ product.product_name }}</td>
+                                    <td>₦{{ product.price }}</td>
+                                {% endfor %}
+                                </tr>
+                            </tbody>
+
+                        </table>
+                </ul>
+            </div>
+
+        </div>
+
+
+
+        {% else %}
+
+
+            <header>
+                <img src="static/images/EduziLogo2.png">
+                <h1>
+                    EDUZI ENTERPRISE
+                </h1>
+                <div class="admin">
+                    <h2>
+                        <button><a href="/adminLogin">Admin Only</a></button>
+
+                    </h2>
+                </div>
+            </header>
+
+            <main class="landing-page">
+
+                <h2>Please <a href="/login">Log in</a> to see available products</h2>
+                <img src="static/images/Drinks.png">
+            </main>
+
+
+
+        {% endif %}
+
+    </div>
+
+
+
+{% endblock %}

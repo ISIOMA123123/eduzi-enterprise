@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+ Your Order
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/yourOrder.css')}}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <header>
+            <img src="static/images/EduziLogo2.png">
+            <h1>
+                EDUZI ENTERPRISE
+            </h1>
+        </header>
+
+        <h1> {{name}}'s order summary</h1>
+
+        <table border="1" cellpadding="8">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            {% for item in order %}
+
+            <tr>
+                <td> {{ item.product }} </td>
+                <td> #{{ "{:,}".format(item.price) }} </td>
+                <td> {{ item.quantity }} </td>
+                <td> {{ "{:,}".format(item.total) }} </td>
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td> ₦{{ "{:,}".format(grand_total) }} </td>
+            </tr>
+
+        </table>
+
+        <h3>You are logged in as {{ name }}. <a href="/logout">Log out</a></h3>
+    </div>
+
+
+
+{% endblock %}

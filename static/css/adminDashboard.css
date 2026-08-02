@@ -1,0 +1,123 @@
+/* Reset */
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* page */
+
+body{
+    background: #f4f7f9;
+    font-family: Arial, Helvetica. sans-serif;
+}
+
+/* main container */
+
+.dashboard {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+
+/* Dashboard card */
+
+.dashboard-card {
+    width: 100%;
+    max-width: 650px;
+    background: white;
+    border-radius: 20px;
+    padding: 50px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,.15);
+}
+
+/* company name */
+.dashboard-card h1{
+    color: #0b6b36;
+    font-size: 42px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+/* dashboard title */
+.dashboard-card h2{
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* welcome text */
+.dashboard-card p{
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Subtitle */
+.subtitle{
+    margin-bottom: 40px
+    color: #888;
+}
+
+/* Buttons Container */
+.dashboardButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/*dashboard Buttons*/
+.btn{
+    display: block;
+    text-decoration: none;
+    background: #0b6b36;
+    color: white;
+    padding: 18px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: .3s;
+
+}
+
+/* Hover effect */
+
+.btn:hover{
+    background: #159947;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,.2);
+}
+
+/* Logout Button */
+.logout{
+    background: #c0392b;
+}
+
+.logout:hover{
+    background: #e74c3c;
+}
+
+/* Mobile Phones */
+
+@media (max-width: 768px){
+    .dashboard-card{
+        padding: 30px;
+    }
+
+    .dashboard-card h1{
+        font-size: 30px;
+    }
+
+    .dashboard-card h2{
+        font-size: 22px;
+    }
+
+    .btn{
+        font-size: 18px;
+        padding: 15px;
+    }
+}

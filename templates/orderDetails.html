@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Order Details
+{% endblock %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/orderDetails.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+<div class="invoice">
+
+    <h1>Customer Order</h1>
+
+    <div class="order-info">
+
+        <p> <strong> Order ID: </strong> {{ order.id }} </p>
+
+        <p> <strong>Customer: </strong> {{ order.name }}</p>
+
+        <p> <strong> Date: </strong> {{ order.order_date}}</p>
+
+        <p> <strong> Total: </strong> ₦{{ "{:,.2f}" .format(order.total) }} </p>
+
+    </div>
+
+    <table>
+        <thead>
+
+            <tr>
+                <th>Product</th>
+
+                <th>Unit Price</th>
+
+                <th>Quantity</th>
+
+                <th>Subtotal</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for item in items %}
+
+            <tr>
+
+                <td>{{ item.product_name }}</td>
+
+                <td>₦{{ "{:,.2f}".format(item.subtotal) }}</td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+        <tfoot>
+
+            <tr>
+
+                <td colspan="3"> <strong> Grand Total </strong> </td>
+
+                <td>
+
+                    <strong>
+                        ₦{{ "{:,.2f}".format(order.total) }}
+                    </strong>
+
+                </td>
+
+            </tr>
+
+        </tfoot>
+
+    </table>
+
+    <br>
+
+    <a class="back-btn" href="/viewOrders"> Back to Orders </a>
+
+</div>
+
+{% endblock %}

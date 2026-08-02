@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Order
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/order.css')}}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div>
+        <header>
+            <img src="static/images/EduziLogo2.png">
+            <h1>
+                EDUZI ENTERPRISE
+            </h1>
+        </header>
+
+            <h1> {{ name }}, please place your order </h1>
+
+            <div class="card">
+
+                <h2>Search Products</h2>
+
+                <form action="/userSearch" method="GET" class="search-form">
+
+                    <input type="search" name="search" value="{{ search }}" placeholder="Search by Products name">
+
+                    <button class="btn"> Search </button>
+
+                    <a href="/order" class="btn gray"> Show All </a>
+                </form>
+
+
+            </div>
+
+            <form action="/submit_order" id="orderForm" method="post">
+                <input autocomplete="off" autofocus name="{{ name }}" value="{{ name }}" type="hidden">
+                <div class="order-container">
+                    <div class="order-table">
+                        <table border="1" cellpadding="8">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Unit Price</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in products %}
+                                    <tr>
+                                        <td>
+                                            {{ product.product_name }}
+                                        </td>
+                                        <td>
+                                            ₦{{ product.price }}
+                                        </td>
+                                        <td>
+                                            <input class="quantity" data-price="{{ product.price }}" type="number" name="{{ product.product_name }}" min="0" step="0.01" value="0">
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="order-summary">
+                        <h2>Order Summary</h2>
+
+                        <p><strong>Customer:</strong> {{ name }}</p>
+
+                        <p>Total Items: <span id="total-items">0</span></p>
+
+                        <p>Total Amount: ₦<span id="grand-total">0.00</span></p>
+
+                        <button type="submit" form="orderForm">
+                            Submit Order
+                        </button>
+                    </div>
+
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+<script src="{{ url_for('static', filename='js/order.js') }}"></script>
+{% endblock %}
