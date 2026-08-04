@@ -18,7 +18,7 @@
         <div class="card">
 
             <header>
-                <img src="static/images/EduziLogo2.png">
+                <img src="{{ uri_for('static', filename='images/EduziLogo2.png') }}" alt="Eduzi Enterprise Logo">
                 <h1>
                     EDUZI ENTERPRISE
                 </h1>
@@ -39,26 +39,27 @@
 
             <h2>Available Products</h2>
             <div class="table-container">
-                <ul>
-                        <table border="1" cellpadding="8">
-                            <thead>
-                                <tr>
-                                    <th>Products</th>
-                                    <th>Prices</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+        
+                <table border="1" cellpadding="8">
+                    <thead>
+                        <tr>
+                            <th>Products</th>
+                            <th>Prices</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                                {% for product in products %}
-                                <tr>
-                                    <td>{{ product.product_name }}</td>
-                                    <td>₦{{ product.price }}</td>
-                                {% endfor %}
-                                </tr>
-                            </tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product.product_name }}</td>
+                            <td>₦{{ product.price }}</td>
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>
 
-                        </table>
-                </ul>
+                </table>
+        
             </div>
 
         </div>
@@ -69,7 +70,7 @@
 
 
             <header>
-                <img src="static/images/EduziLogo2.png">
+                <img src="{{ url_for('static', filename='images/EduziLogo2.png')  }}">
                 <h1>
                     EDUZI ENTERPRISE
                 </h1>
@@ -84,7 +85,7 @@
             <main class="landing-page">
 
                 <h2>Please <a href="/login">Log in</a> to see available products</h2>
-                <img src="static/images/Drinks.png">
+                <img src="{{ url_for('static', filename='images/Drinks.png') }}" alt="Drinks">
             </main>
 
 
