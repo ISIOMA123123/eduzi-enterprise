@@ -1,6 +1,6 @@
 services:
   - type: web
-name: eduzi-enterprise
-env: python
-buildCommand: pip install -r requirements.txt
-startCommand: gunicorn app:app
+    name: eduzi-enterprise
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
