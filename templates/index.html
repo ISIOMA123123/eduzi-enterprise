@@ -18,7 +18,7 @@
         <div class="card">
 
             <header>
-                <img src="{{ uri_for('static', filename='images/EduziLogo2.png') }}" alt="Eduzi Enterprise Logo">
+                <img src="{{ url_for('static', filename='images/EduziLogo2.png') }}" alt="Eduzi Enterprise Logo">
                 <h1>
                     EDUZI ENTERPRISE
                 </h1>
@@ -55,7 +55,7 @@
                             <td>₦{{ product.price }}</td>
                         </tr>
                         {% endfor %}
-                        
+
                     </tbody>
 
                 </table>

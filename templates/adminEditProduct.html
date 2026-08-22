@@ -5,7 +5,7 @@ Edit Product
 {% endblock %}
 
 {% block css %}
-<link rel="styleheet" href="{{}}">
+<link rel="styleheet" href="{{ url_for('static', filename='css/adminProducts.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -20,7 +20,7 @@ Edit Product
 
         <br><br>
         <label>Price</label>
-        <input type="number" name="price" value="{{ product.price }}" step="0.01" requred>
+        <input type="number" name="price" value="{{ product.price }}" step="0.01" required>
 
         <button type="submit">Update Product</button>
     </form>
